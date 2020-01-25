@@ -7,7 +7,7 @@
     "prebuild": "tslint --project .",
     "start": "webpack-dev-server",
     "build": "webpack --mode=production",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Warning: no test specified\""
   },
   "author": "wso2.com",
   "license": "UNLICENSED",
