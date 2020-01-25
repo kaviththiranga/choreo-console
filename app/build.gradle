@@ -1,0 +1,37 @@
+def inputFiles = [
+    project.file("package-lock.json"),
+    project.file("package.json"),
+    project.file("webpack.config.js"),
+    project.file("tsconfig.json"),
+    project.file("src")
+]
+
+task install(type: Exec) {
+    inputs.file("package-lock.json")
+    inputs.file("package.json")
+    outputs.dir("node_modules")    
+    outputs.cacheIf({ true }) 
+    commandLine "npm", "i"
+}
+
+task clean(type: Delete) {
+   delete 'build', 'node_modules'
+   followSymlinks = true
+}
+
+task build(type: Exec) {
+    dependsOn clean
+    dependsOn install
+    inputs.files(inputFiles)
+    outputs.dir("build")
+    outputs.cacheIf({ true }) 
+    commandLine "$projectDir/node_modules/.bin/webpack", "--mode=production"
+}
+
+task start(type: Exec) {
+    dependsOn install
+    inputs.files(inputFiles)
+    commandLine "$projectDir/node_modules/.bin/webpack-dev-server"
+}
+
+buildDir "build"
