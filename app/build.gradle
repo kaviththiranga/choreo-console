@@ -11,7 +11,7 @@ task install(type: Exec) {
     inputs.file("package.json")
     outputs.dir("node_modules")    
     outputs.cacheIf({ true }) 
-    commandLine "npm", "i"
+    commandLine "npm", "ci"
 }
 
 task clean(type: Delete) {
