@@ -1,11 +1,11 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import { Home } from "./views/Home";
+import { CodeDeployView  } from "./views/CodeDeploy";
 
 import "./styles/index.scss"
 
 ReactDOM.render(
-    <Home />,
+    <CodeDeployView />,
     document.getElementById("container"),
 );
