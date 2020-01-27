@@ -26,7 +26,8 @@ module.exports = (env, argv) => {
             extensions: [".ts", ".tsx", ".js"]
         },
         entry: {
-            app: path.join(APP_DIR, "index.tsx")
+            app: path.join(APP_DIR, "index.tsx"),
+            editor: path.join(APP_DIR, "index-editor.tsx"),
         },
         output: {
             filename: '[name].[contenthash].js',
@@ -117,8 +118,15 @@ module.exports = (env, argv) => {
             new CleanWebpackPlugin(),
             new HtmlWebpackPlugin({
                 title: "Choreo Console",
-                template: path.join(APP_DIR, "index.ejs"),
-                filename: "index.html"
+                template: path.join(APP_DIR, "index-mui.ejs"),
+                filename: "index.html",
+                excludeChunks: ["editor"]
+            }),
+            new HtmlWebpackPlugin({
+                title: "Choreo Code Editor",
+                template: path.join(APP_DIR, "index-w3css.ejs"),
+                filename: "code.html",
+                excludeChunks: ["app"]
             }),
             new webpack.DefinePlugin({
                 API_BACKEND_URL: JSON.stringify(apiURL)

@@ -6,7 +6,7 @@ import "./style.scss";
 
 export function CodeDeployView() {
     return <div className="container">
-        <h1>Deploy Code</h1>
+        <h1>Choreo Code Editor</h1>
         <CodeEditor onChange={() => undefined }/>
     </div>
 }
