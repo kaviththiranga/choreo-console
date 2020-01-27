@@ -8,3 +8,6 @@
  */
 
 rootProject.name = 'choreo-console'
+
+include ":frontend"
+project(":frontend").projectDir = file("app")
